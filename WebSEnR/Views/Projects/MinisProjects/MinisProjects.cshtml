@@ -1,0 +1,37 @@
+﻿@using WebSEnR.Models.ProjectsModel
+@model IEnumerable<MinisProject>
+
+<div class="container-fluid">
+    <div class="container">
+        <h2>List of ministry projects</h2>
+        <a class="btn btn-primary btn-sm" , href="/Projects/CreateMinisProject">New Project</a>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th width="3%">Stt</th>
+                    <th width="20%">Tên đề tài</th>
+                    <th width="20%">Người thực hiện</th>
+                    <th width="30%">Mô tả</th>
+                    <th width="20%">Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var upt in Model.Reverse())
+                {
+                    <tr>
+                        <td>@upt.Id</td>
+                        <td>@upt.Name</td>
+                        <td>@upt.Member</td>
+                        <td>@upt.Description</td>
+                        <td>@upt.Href</td>
+                        <td>
+                            <a type="btn btn-success" asp-controller="Projects" asp-action="EditMinisProject" asp-route-id="@upt.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                            <a type="btn btn-success" asp-controller="Projects" asp-action="DeleteMinisProject" asp-route-id="@upt.Id" class="btn btn-sm btn-outline-secondary">Delete</a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

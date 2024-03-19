@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebSEnR</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/img/Logo/favicon_package_v0.16/favicon.ico">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebSEnR.styles.css" asp-append-version="true" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .fixed-header{
+            position:fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color:black;
+            z-index: 2;
+        }
+
+        #registerButton {
+            margin-left: 10px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header class="fixed-header">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebSEnR</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    News
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">News</a>
+                                    <a class="dropdown-item nav-link text-dark" href="#">Kí kết hợp tác</a>
+                                    <a class="dropdown-item nav-link text-dark" href="#">Tài trợ học bổng</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item"> 
+                            <div class="dropdown">
+                                <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Các dự án
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item nav-link text-dark" asp-controller="Projects" asp-action="Index">Tất cả các dự án</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-controller="Projects" asp-action="MinisProjects">Cấp bộ</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-controller="Projects" asp-action="UniProjects">Cấp trường</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-controller="Projects" asp-action="EtpProjects">Doanh nghiệp</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Hoạt động
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Activities" asp-action="Index">Tất cả Hoạt động</a>
+                                    <a class="dropdown-item nav-link text-dark" href="#">Học bổng sau đại học</a>
+                                    <a class="dropdown-item nav-link text-dark" href="#">Hội thảo khoa học</a>
+                                    <a class="dropdown-item nav-link text-dark" href="#">Hợp tác doanh nghiệp</a>
+                                    <a class="dropdown-item nav-link text-dark" href="#">Hoạt động khác</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Giới thiệu Lab
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="AboutLab" asp-action="Index">Giới thiệu Lab</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="AboutLab" asp-action="EquipmentIndex">Trang thiết bị</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="AboutLab" asp-action="Research">Hướng nghiên cứu</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="AboutLab" asp-action="Product">Sản phẩm</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="AboutLab" asp-action="Member">Thành viên</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="AboutLab" asp-action="Document">Tài liệu tham khảo</a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Tuyển dụng
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Recruitment" asp-action="Index">Tuyển dụng</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Recruitment" asp-action="EtpResgisterPosts">Form đăng kí (dành cho nhà tuyển dụng)</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Recruitment" asp-action="AbtEtps">Giới thiệu công ty</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Recruitment" asp-action="InternInfo">Thông tin thực tập</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Recruitment" asp-action="ResearchInfo">Dự án nghiên cứu</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Recruitment" asp-action="TrainingInfo">Dự án đào tạo</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Recruitment" asp-action="FresherInfo">Giới thiệu việc làm</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="btn btn-outline-dark" id="registerButton" onclick="register()">Đăng kí thành viên</button>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <br />
+    <div>@* class="container"*@
+        <main role="main" class="pb-3">
+            <br />
+            <br />
+            @RenderBody()
+        </main>
+    </div>
+    <br />
+    <br />
+    <br />
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - WebSEnR - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+<script>
+    function register(){
+        var html = `
+                <h2 id="actionmode">Đăng kí thành viên</h2><br>
+                <div id="register">
+                    <form>
+                        <label for="fname">Họ và tên:</label><br>
+                        <input type="text" id="fname" name="fname"><br><br>
+                        <label for="dob">Date of Birth:</label><br><br>
+                        <input type="date" name="begin" placeholder="dd-mm-yyyy" value="" min="1980-01-01" max="2023-12-31"><br><br>
+                        <label for="school">Trường:</label><br>
+                        <input type="text" id="school" name="school"><br><br>
+                        <label for="faculty">Khoa:</label><br>
+                        <input type="text" id="faculty" name="faculty"><br><br>
+                        <label for="grade">Khoá:</label><br>
+                        <input type="text" id="grade" name="grade"><br><br>
+                        <label for="desc_abtme">Giới thiệu bản thân:</label><br>
+                        <textarea type="text" id="desc_abtme" name="desc_abtme"></textarea><br><br>
+                        <label for="desc_abt_wanna">Giới thiệu về mong muốn của mình:</label><br>
+                        <textarea type="text" id="desc_abt_wanna" name="desc_abt_wanna"></textarea><br><br>
+                        <label for="sdt">Số điện thoại:</label><br>
+                        <input type="text" id="sdt" name="sdt"><br><br>
+                        <label for="cv_link">Link CV (nếu có):</label><br>
+                        <input type="text" id="cv_link" name="cv_link"><br><br>
+                    </form>
+                </div>`;
+        Swal.fire({
+            html: html,
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+            showCancelButton: true,
+            showCloseButton: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var fnameInput = document.getElementById("fname");
+                var dobInput = document.querySelector('input[type="date"]');
+                var schoolInput = document.getElementById("school");
+                var facultyInput = document.getElementById("faculty");
+                var gradeInput = document.getElementById("grade");
+                var descAbtmeTextarea = document.getElementById("desc_abtme");
+                var descAbtWannaTextarea = document.getElementById("desc_abt_wanna");
+                var sdtInput = document.getElementById("sdt");
+                var cvLinkInput = document.getElementById("cv_link");
+
+                var fnameValue = fnameInput.value;
+                var dobValue = dobInput.value;
+                var schoolValue = schoolInput.value;
+                var facultyValue = facultyInput.value;
+                var gradeValue = gradeInput.value;
+                var descAbtmeValue = descAbtmeTextarea.value;
+                var descAbtWannaValue = descAbtWannaTextarea.value;
+                var sdtValue = sdtInput.value;
+                var cvLinkValue = cvLinkInput.value;
+                if(cvLinkValue == ""){
+                    cvLinkValue = "none";
+                }
+
+                var data = {
+                    fname: fnameValue,
+                    dob: dobValue,
+                    school: schoolValue,
+                    faculty: facultyValue,
+                    grade: gradeValue,
+                    desc_abtme: descAbtmeValue,
+                    desc_abt_wanna: descAbtWannaValue,
+                    cv_link: cvLinkValue,
+                    sdt: sdtValue
+                }
+                console.log(data);
+                $.ajax({
+                    url: '/Home/AddMemberToQueue',
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    success: function (response) {
+                        if (response) {
+                            console.log('đã thêm vào hàng đợi');
+                        }
+                    },
+                    error: function (error) {
+                        console.error(error);
+                    }
+                });
+                Swal.fire(
+                    'Xin cảm ơn!',
+                    "Hãy chờ quản trị viên duyệt đơn của bạn nhé!",
+                )
+            }
+        })
+    }
+
+</script>

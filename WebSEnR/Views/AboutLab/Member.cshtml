@@ -1,0 +1,104 @@
+﻿@model IEnumerable<lab_member>
+<head>
+    <style>
+        body {
+            background-color: #eee;
+            margin-top: 20px;
+        }
+
+        .border-5, .border-w-5 {
+            border-width: 5px !important;
+        }
+
+        .border-white {
+            border: 1px solid transparent;
+            border-color: #fff !important;
+        }
+
+        hr.hr-primary {
+            border-top-color: #CC164D !important;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        .font-weight-normal {
+            font-weight: 400 !important;
+        }
+    </style>
+</head>
+
+<div class="container py-7">
+    <h2 class="text-uppercase text-letter-spacing-xs my-0 text-dark font-weight-bold">
+        Giáo viên hướng dẫn <i class="ion-ios-body pl-1 text-primary op-8 z-index-1"></i>
+    </h2>
+    <hr class="hr-primary w-15 hr-xl ml-0 mb-5">
+    <div class="row mb-5">
+        <div class="col-md-6 order-md-2">
+            <img src="../img/Env/Capture.PNG" alt="Personal Trainer 1" class="img-fluid border-white border-w-5 w-50 w-md-80 w-lg-60 rounded-circle">
+        </div>
+        <div class="col-md-6 flex-valign text-md-right">
+            <h3 class="text-uppercase text-letter-spacing-xs mt-0 mb-1 text-dark font-weight-bold">
+                PGS. TS. Phạm Đức An
+            </h3>
+            <h5 class="my-0 font-weight-normal">
+                <em>Chức vụ: Phó Trưởng Khoa Cơ Điện Tử, Giảng viên cao cấp</em>
+            </h5>
+            <hr class="hr-primary w-70 ml-0 ml-md-auto mr-md-0 mb-3">
+            <p style="font-weight: bold;">LĨNH VỰC NGHIÊN CỨU/RESEARCH AREARS</p>
+            <ul>
+                <li>Kỹ thuật xử lý ảnh</li>
+                <li>Kỹ thuật điều khiển tối ưu</li>
+                <li>Robot tự hành và robot dạng người</li>
+                <li>Hệ thống mô phỏng lái trong môi trường ảo 3D có hỗ trợ cảm giác chuyển động lái cho tài xế</li>
+                <li>Tích hợp các hệ điều khiển mã nguồn mở (LinuxCNC/emc2), Grbl…, cho hệ thống cơ điện tử: máy gia công CNC, robot song song, cánh tay robot, hệ thống máy sản xuất tự động trong các ngành chế biến gỗ</li>
+                <li>Mô hình hóa và mô phỏng các hệ thống cơ điện tử trên các phần mềm CAD/CAE</li>
+                <li>Công nghệ quét 3D, và kỹ thuật ngược trong thiết kế sản phẩm</li>
+                <li>Ứng dụng Arduino/Raspberry pi/ Beagle bone/ Kinect One / Leap motion trong các giải pháp giáo dục và đào tạo.</li>
+                <li>Xây dựng môi trường thực tại ảo tăng cường dựa trên sử dụng Visual C++/ OpenGL / Java / Matlab</li>
+            </ul>
+            <a href="https://sme.hust.edu.vn/officer/pham-duc-an.html" data-toggle="scroll-link" class="text-sm font-weight-bold"><i class="fa fa-chevron-right text-xs text-pink"></i> Chi tiết</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="container py-7">
+    <h2 class="text-uppercase text-letter-spacing-xs my-0 text-dark font-weight-bold">
+        Thành viên lab <i class="ion-ios-body pl-1 text-primary op-8 z-index-1"></i>
+    </h2>
+    <hr class="hr-primary w-15 hr-xl ml-0 mb-5">
+
+    <div class="container">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Họ và tên</th>
+                    <th>Trường</th>
+                    <th>Khoa</th>
+                    <th>Khoá</th>
+                    <th>Role</th>
+                    <th>Giới thiệu bản thân</th>
+                    <th>Dự án đã tham gia</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var q in Model)
+                {
+                    <tr>
+                        <td>@q.id</td>
+                        <td>@q.name</td>
+                        <td>@q.school</td>
+                        <td>@q.facul</td>
+                        <td>@q.grade</td>
+                        <td>@q.role</td>
+                        <td>@q.desc</td>
+                        <td>@q.joined_prjs</td>                       
+                    </tr>
+                }
+            </tbody>
+        </table>        
+    </div>
+</div>

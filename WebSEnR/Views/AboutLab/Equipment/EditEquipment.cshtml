@@ -1,0 +1,35 @@
+﻿@using WebSEnR.ViewModel.EquipmentViewModel
+@using WebSEnR.Data.Enum
+@model EditEquipmentViewModel
+
+
+<form method="post" asp-action="EditEquipment" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Tittle">Name</label>
+        <input asp-for="Tittle" class="form-control" placeholder="Enter name of the equipment">
+        <span asp-validation-for="Tittle" class="Text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="ProductId">ProductID</label>
+        <input asp-for="ProductId" class="form-control" placeholder="Enter id of the equipment">
+        <span asp-validation-for="ProductId" class="Text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control" placeholder="Enter description about the equipment">
+        <span asp-validation-for="Description" class="Text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="EquipmentCategory">EquipmentCategory</label>
+        <select asp-for="EquipmentCategory" asp-items="@Html.GetEnumSelectList<EquipmentCategory>()" class="form-control form-control-lg">
+            <option>--Select--</option>
+        </select>
+        <span asp-validation-for="EquipmentCategory" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Image">Image</label>
+        <input asp-for="Image" type="file" class="form-control" placeholder="Enter Image URl">
+        <span asp-validation-for="Image" class="Text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

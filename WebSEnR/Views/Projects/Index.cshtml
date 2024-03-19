@@ -1,0 +1,65 @@
+﻿<head>
+    <style>
+        article:hover {
+            background-color:darkgrey;
+        }
+        h3{
+            margin-left: 15px;
+            margin-top: 15px;
+        }
+        /*article{
+            background-image: linear-gradient(white, lightgray);
+        }*/
+    </style>
+</head>
+<div class="container-fluid">
+    <div class="container">
+        <h1>Dự án cấp bộ</h1>
+        <br />       
+        <div class="space-y-4">
+            <article class="border border-3" style="height:150px;" data="MIPJTS" onclick="getArticleValue(this)">
+                <h3><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                        </svg>  Xem tất cả các dự án</h3>
+            </article>
+        </div>
+        <br id="university_prjts"/>
+        <br />
+        <h1>Dự án cấp trường</h1>
+        <br />
+        <div class="space-y-4">            
+            <article class="border border-3" style="height:150px;" data="UNIPJTS" onclick="getArticleValue(this)">
+                <h3><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                        </svg> Xem tất cả các dự án</h3>
+            </article> 
+        </div>
+        <br id="enterprise_prjts" />
+        <br  />
+        <h1 >Dự án doanh nghiệp</h1>
+        <br />
+        <div class="space-y-4">            
+            <article class="border border-3" style="height:150px;" data="ETPPJTS" onclick="getArticleValue(this)">
+                <h3>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+                    </svg> Xem tất cả các dự án
+                </h3>
+            </article> 
+        </div>
+    </div>
+</div>
+<script>
+    function getArticleValue(element) {
+        var articleValue = element.getAttribute("data");
+        if (articleValue == "UNIPJTS") {
+            window.location.href = "https://localhost:7214/Projects/UniProjects";
+        }
+        if (articleValue == "MIPJTS") {
+            window.location.href = "https://localhost:7214/Projects/MinisProjects";
+        }
+        if (articleValue == "ETPPJTS") {
+            window.location.href = "https://localhost:7214/Projects/EtpProjects";
+        }        
+    }
+</script>

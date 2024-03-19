@@ -1,0 +1,402 @@
+﻿
+<head>
+    <style>
+        /*#project_content,*/
+        #research_content,
+        #miproject_content,
+        #uniproject_content,
+        #etpproject_content,
+        #commerce_content {
+            display: none;
+        }
+        .nav-pills .nav-link.active {
+            background-color:darkgray;
+        }
+        textarea {
+            width: 80%; 
+            padding: 10px;
+            border: 1px solid #ccc; 
+            border-radius: 5px;
+        }
+        #datn,
+        #nckh,
+        #tm {
+            background-color:lightgrey;
+        }
+    </style>
+</head>
+<div>    
+    <div class="container-fluid">
+        <div class="container">
+            <b style="font-size:large;" class="text-center">Tạo 1 bài viết mới</b><br /><br />
+        </div>
+        <div class="row">
+            <div class="col-6"><h3>Lab Products</h3></div>
+            <div class="col-6"><h3>Lab Projects</h3></div>
+        </div>
+        <ul class="nav nav-pills nav-fill" id="product_type">
+            <li class="nav-item" id="datn">
+                <a class="nav-link product text-dark active" onclick="openTab(event, 'project')">Đồ án tốt nghiệp</a>
+            </li>
+            <li class="nav-item" id="nckh">
+                <a class="nav-link product text-dark" onclick="openTab(event, 'research')">Nghiên cứu khoa học</a>
+            </li>
+            <li class="nav-item" id="tm">
+                <a class="nav-link product text-dark" onclick="openTab(event, 'commerce')">Thương mại</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" onclick="openTab(event, 'miproject')">Dự án cấp bộ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" onclick="openTab(event, 'uniproject')">Dự án cấp trường</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" onclick="openTab(event, 'etpproject')">Dự án doanh nghiệp</a>
+            </li>
+        </ul>
+        <br />
+        <br />
+        <div id="project_content" class="tab-content">
+            <div>
+                <form class="project text-center">
+                    <h1>Project Form</h1><br />
+                    <label>Tên đề tài:</label><br />
+                    <textarea id="title_p"></textarea>
+                    <br /><br />
+                    <label>Thành viên:</label><br />
+                        <textarea id="member_p" style="height:100px;"></textarea>
+                    <br /><br />
+                    <label>Giới thiệu đề tài:</label><br />
+                    <textarea id="description_p" style="height:150px;"></textarea>
+                    <br /><br />
+                    <label>Link đề tài:</label><br />
+                    <textarea id="href_p"></textarea>
+                    <br /><br />
+                </form>
+            </div>
+        </div>
+        <div id="research_content" class="tab-content">
+            <form class="research text-center">
+                <h1>Research Form</h1><br />
+                    <label>Tên đề tài:</label><br />
+                    <textarea id="title_r"></textarea>
+                    <br /><br />
+                    <label>Thành viên:</label><br />
+                        <textarea id="member_r" style="height:100px;"></textarea>
+                    <br /><br />
+                    <label>Giới thiệu đề tài:</label><br />
+                    <textarea id="description_r" style="height:150px;"></textarea>
+                    <br /><br />
+                    <label>Link đề tài:</label><br />
+                    <textarea id="href_r"></textarea>
+                    <br /><br />
+            </form>
+        </div>
+        <div id="commerce_content" class="tab-content">
+            <h1>commerce</h1>
+        </div>
+        <div id="miproject_content" class="tab-content">
+            <form class="research text-center">
+                <h1>Dự án cấp bộ Form</h1><br />
+                <label>Tên đề tài:</label><br />
+                <textarea id="title_mi"></textarea>
+                <br /><br />
+                <label>Thành viên:</label><br />
+                <textarea id="member_mi" style="height:100px;"></textarea>
+                <br /><br />
+                <label>Giới thiệu đề tài:</label><br />
+                <textarea id="description_mi" style="height:150px;"></textarea>
+                <br /><br />
+                <label>Link đề tài:</label><br />
+                <textarea id="href_mi"></textarea>
+                <br /><br />
+            </form>
+        </div>
+        <div id="uniproject_content" class="tab-content">
+            <form class="research text-center">
+                <h1>Dự án cấp trường Form</h1><br />
+                <label>Tên đề tài:</label><br />
+                <textarea id="title_uni"></textarea>
+                <br /><br />
+                <label>Thành viên:</label><br />
+                <textarea id="member_uni" style="height:100px;"></textarea>
+                <br /><br />
+                <label>Giới thiệu đề tài:</label><br />
+                <textarea id="description_uni" style="height:150px;"></textarea>
+                <br /><br />
+                <label>Link đề tài:</label><br />
+                <textarea id="href_uni"></textarea>
+                <br /><br />
+            </form>
+        </div>
+        <div id="etpproject_content" class="tab-content">
+            <form class="research text-center">
+                <h1>Dự án doanh nghiệp Form</h1><br />
+                <label>Tên đề tài:</label><br />
+                <textarea id="title_etp"></textarea>
+                <br /><br />
+                <label>Tên công ty:</label><br />
+                <textarea id="name_etp"></textarea>
+                <br /><br />
+                <label>Thành viên:</label><br />
+                <textarea id="member_etp" style="height:100px;"></textarea>
+                <br /><br />
+                <label>Giới thiệu đề tài:</label><br />
+                <textarea id="description_etp" style="height:150px;"></textarea>
+                <br /><br />
+                <label>Link đề tài:</label><br />
+                <textarea id="href_etp"></textarea>
+                <br /><br />
+            </form>
+        </div>
+        <br />
+        <button type="button" class="align-content-center" style="margin:100px;" onclick="submit()">Đăng lên</button>
+        <br />
+        <div class="container row">
+            <div class="col-6">
+                <b class="text-center">Xoá bài viết (product của lab) có id là:</b><br /><br />
+                <input id="delete_item_id" type="text" /><br /><br />
+                <button type="button" class="align-content-center" onclick="delete_item()">Xoá</button>
+            </div><br />
+            <div class="col-6">
+                <b class="text-center">Xoá bài viết (projects) có id là:</b><br /><br />
+                <input id="delete_item_id_2" type="text" /><br /><br />
+                <button type="button" class="align-content-center" onclick="delete_item_2()">Xoá</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(event, tabName) {
+        var tabContents = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabContents.length; i++) {
+            tabContents[i].style.display = "none";
+        }
+        var tabLinks = document.getElementsByClassName("nav-link");
+        for (var i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].classList.remove("active");
+        }
+        document.getElementById(tabName + "_content").style.display = "block";
+        event.currentTarget.classList.add("active");
+    }
+    function submit(){
+        var tabname = document.querySelector('a.active');
+        var type = tabname.innerHTML;
+        if(type == "Đồ án tốt nghiệp"){
+            var title = $('#title_p').val();
+            var member = $('#member_p').val();
+            var description = $('#description_p').val();
+            var href = $('#href_p').val();
+            var data = {
+                type: type,
+                title: title,
+                member: member,
+                desc: description,
+                href: href
+            };
+            console.log(data);
+            $.ajax({
+                url: '/AboutLab/UpdateNewPost',
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json',
+                success: function (response) {
+                    if (response) {
+                        alert('đã tạo bài đăng');
+                    }
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+        }
+        if (type == "Nghiên cứu khoa học") {
+            var title = $('#title_r').val();
+            var member = $('#member_r').val();
+            var description = $('#description_r').val();
+            var href = $('#href_r').val();
+            var data = {
+                type: type,
+                title: title,
+                member: member,
+                desc: description,
+                href: href
+            };
+            console.log(data);
+            $.ajax({
+            url: '/AboutLab/UpdateNewPost', 
+            type: 'POST', 
+            data: JSON.stringify(data),
+            contentType: 'application/json', 
+            success: function (response) {
+                if (response) {
+                    alert('đã tạo bài đăng');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+        }
+        if (type == "Dự án cấp bộ") {
+            var title = $('#title_mi').val();
+            var member = $('#member_mi').val();
+            var description = $('#description_mi').val();
+            var href = $('#href_mi').val();
+            var data = {
+                name: title,
+                member: member,
+                description: description,
+                href: href
+            };
+            console.log(data);
+            $.ajax({
+                url: '/Projects/AddMiProjects',
+                type: 'POST', 
+                data: JSON.stringify(data),
+                contentType: 'application/json', 
+                success: function (response) {
+                    if (response) {
+                        alert('đã tạo bài đăng');
+                    }
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+        });
+        }
+        if (type == "Dự án cấp trường") {
+            var title = $('#title_uni').val();
+            var member = $('#member_uni').val();
+            var description = $('#description_uni').val();
+            var href = $('#href_uni').val();
+            var data = {
+                name: title,
+                member: member,
+                description: description,
+                href: href
+            };
+            console.log(data);
+            $.ajax({
+                url: '/Projects/AddUniProjects',
+                type: 'POST', 
+            data: JSON.stringify(data),
+            contentType: 'application/json', 
+            success: function (response) {
+                if (response) {
+                    alert('đã tạo bài đăng');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+        }
+        if (type == "Dự án doanh nghiệp") {
+            var title = $('#title_etp').val();
+            var member = $('#member_etp').val();
+            var name_etp = $('#name_etp').val();
+            var description = $('#description_etp').val();
+            var href = $('#href_etp').val();
+            var data = {
+                company: name_etp,
+                name: title,
+                member: member,
+                description: description,
+                href: href
+            };
+            console.log(data);
+            $.ajax({
+                url: '/Projects/AddEtpProjects',
+                type: 'POST', 
+            data: JSON.stringify(data),
+            contentType: 'application/json', 
+            success: function (response) {
+                if (response) {
+                    alert('đã tạo bài đăng');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+        }
+        if (type == "Thương mại"){
+
+        }
+        Swal.fire("Đã đăng!")
+    }
+    function delete_item(){
+        var str_id = $('#delete_item_id').val();
+        var id = parseInt(str_id,10);
+        $.ajax({
+            url: '/AboutLab/DeletePOST',
+            type: 'POST',
+            data: { id: id },
+            success: function (response) {
+                if (response) {
+                    alert('đã xoá');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+        Swal.fire("Đã xoá!")
+    }
+    function delete_item_2(){
+        var tabname = document.querySelector('a.active');
+        var type = tabname.innerHTML;
+        var str_id = $('#delete_item_id_2').val();
+        var id = parseInt(str_id,10);
+        if (type == "Dự án cấp bộ"){
+            $.ajax({
+                url: '/Projects/DeleteMiProjects',
+                type: 'POST',
+                data: { id: id },
+                success: function (response) {
+                    if (response) {
+                        alert('đã xoá');
+                    }
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+            Swal.fire("Đã xoá!")
+        }
+        if (type == "Dự án cấp trường"){
+            $.ajax({
+                url: '/Projects/DeleteUniProjects',
+                type: 'POST',
+                data: { id: id },
+                success: function (response) {
+                    if (response) {
+                        alert('đã xoá');
+                    }
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+            Swal.fire("Đã xoá!")
+        }
+        if (type == "Dự án doanh nghiệp"){
+            $.ajax({
+                url: '/Projects/DeleteEtpProjects',
+                type: 'POST',
+                data: { id: id },
+                success: function (response) {
+                    if (response) {
+                        alert('đã xoá');
+                    }
+                },
+                error: function (error) {
+                    console.error(error);
+                }
+            });
+            Swal.fire("Đã xoá!")
+        }
+    }
+</script>

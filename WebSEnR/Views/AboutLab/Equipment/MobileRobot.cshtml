@@ -1,0 +1,80 @@
+﻿@using WebSEnR.Models.AboutLabModel
+@model IEnumerable<Equipments>
+<head>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            margin-top: 20px;
+            background-image: url("../img/Env/BackgroundEquipment.png");
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .blur {
+            -webkit-box-shadow: 0 0 15px rgba(188,191,200,0.1),0 0 15px rgba(188,191,200,0.2) !important;
+            box-shadow: 0 0 15px rgba(188,191,200,0.1),0 0 15px rgba(188,191,200,0.2) !important;
+        }
+
+        .mr-5 {
+            margin-right: 5px !important;
+        }
+
+        .va-middle {
+            vertical-align: middle !important;
+        }
+
+        .bg-img {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            height: 600px;
+            border-radius: 10px;
+            object-fit: cover; /* Maintain aspect ratio */
+        }
+
+        .card-title {
+            font-size: 62px;
+        }
+
+        .card-text {
+            font-size: 22px;
+            text-align: left;
+        }
+
+
+        .text-right-md {
+            text-align: right;
+            padding-top: 150px;
+            padding-left: 10px;
+        }
+
+    </style>
+</head>
+
+<div class="container mt-5">
+    <a class="btn btn-primary btn-sm" , href="/AboutLab/CreateEquipment">New Project</a>
+    <div class="p-x-15 blur">
+        @foreach (var item in Model)
+        {
+            var Category = item.EquipmentCategory.ToString();
+            if (Category == "MobileRobot")
+            {
+                <a type="btn btn-success" asp-controller="AboutLab" asp-action="EditEquipment" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a type="btn btn-success" asp-controller="AboutLab" asp-action="DeleteEquipment" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Delete</a>
+                <div class="row position-relative" style="margin-top:30px; margin-bottom:30px">
+                    <div class="col-md-6 bg-img" style="background-image: url(@item.Image); min-height:320px">
+                        <p class="mb-0"></p>
+                    </div>
+                    <!-- / box-bg-image -->
+                    <div class="col-md-6 col-md-offset-6 text-right-md p-30  text-center" style="background-color:#fdefe7">
+                        <h5 class="card-title">@item.Tittle</h5>
+                        <p class="card-text">@item.Description</p>
+                        <a href="#" class="btn btn-primary">Đăng ký sử dụng</a>
+                    </div>
+                </div>
+                <!-- / row -->
+                <!-- / column -->
+            }
+        }
+    </div><!-- / p-15 -->
+</div>

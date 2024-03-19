@@ -1,0 +1,160 @@
+﻿<head>
+    <style>
+        form-class{
+            margin-left: 10px;
+        }
+        textarea{
+             width: 80%;
+        }
+        label{
+            margin-left: 10px;
+            font-size:large;
+        }
+
+        .checkbox-group{
+            margin-left: 15px;
+        }
+        #submit_post:hover{
+            background-color:lightgrey;
+        }
+    </style>
+</head>
+<div class="container-fluid">
+    <br/>
+    <div class="container">
+        <h2>Đăng tin tuyển dụng</h2>
+        <br /><br />
+        <div class="form-class">            
+            <h3>Điền đầy đủ form sau:</h3><br />
+            <label>Tiêu đề bài viết:</label><br />
+            <textarea id="title_post" required></textarea>
+            <br /><br />
+            <label>Tên công ty:</label><br />
+            <textarea id="ept_name" style="height:100px;" required></textarea>
+            <br /><br />
+            <label>Giới thiệu về công ty:</label><br />
+            <textarea id="etp_description" style="height:200px;" required></textarea>
+            <br /><br />
+            <label>Vị trí tuyển dụng:</label><br />
+                <div class="checkbox-group" id="checkblock">
+                    <input type="checkbox" id="_main" value="all">    all/none<br>
+                    <input type="checkbox" id="intern" value="intern">    Thực tập sinh<br>
+                    <input type="checkbox" id="research" value="research">    Nghiên cứu sinh (cộng tác viên)<br>
+                    <input type="checkbox" id="training" value="training">    Đào tạo việc làm<br>
+                    <input type="checkbox" id="fresher" value="fresher">    Nhân viên chính thức<br>
+                </div>
+            <br /><br />
+            <label>Giới thiệu về công việc:</label><br />
+            <textarea id="etp_job_description" style="height:200px;" required></textarea>
+            <br /><br />
+            <label>Email liên hệ:</label><br />
+            <textarea id="email_re" required></textarea>
+            <br /><br />
+            <label>SĐT liên hệ:</label><br />
+            <textarea id="sdt_re" required></textarea>
+            <br /><br />
+            <label>Hạn nộp hồ sơ:</label><br />
+            <textarea id="exp_date" required></textarea>
+            <br /><br />  
+            <button type="button" id="submit_post" onclick="submit_this()">Đăng kí</button>
+        </div>        
+    </div>
+</div>
+<script>
+    document.querySelector('#checkblock').onclick = checkAll;
+    function checkAll(e) {
+        e = e || event;
+        var from = e.target || e.srcElement, cbs = this.querySelectorAll('input'), i = 1;
+        if (/^_main$/i.test(from.id)) {
+            for (; i < cbs.length; i += 1) {
+                cbs[i].checked = from.checked;
+            }
+        } else {
+            var main = document.querySelector('#_main'), j = cbs.length;
+            for (; i < cbs.length; i += 1) {
+                j -= cbs[i].checked ? 0 : 1;
+            }
+            main.checked = j === cbs.length ? true : false;
+        }
+    }
+    function submit_this() {
+        var title_post = document.getElementById("title_post").value;
+        console.log(typeof(title_post));
+        var ept_name = document.getElementById("ept_name").value;
+        var etp_description = document.getElementById("etp_description").value;
+        var etp_job_description = document.getElementById("etp_job_description").value;
+        var email_re = document.getElementById("email_re").value;
+        var sdt_re = document.getElementById("sdt_re").value;
+        var exp_date = document.getElementById("exp_date").value;
+
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        var selectedPositions = [];
+        checkboxes.forEach(function (checkbox) {
+            selectedPositions.push(checkbox.value);
+        });
+
+        if (selectedPositions.includes("intern")){
+            var i = "1";
+        }else{
+            i = "0";
+        }
+        if (selectedPositions.includes("research")) {
+            var r = "1";
+        }else{
+            r = "0";
+        }
+        if (selectedPositions.includes("training")) {
+            var t = "1";
+        } else {
+            t = "0";
+        }
+        if (selectedPositions.includes("fresher")) {
+            var f = "1";
+        } else {
+            f = "0";
+        }
+
+        const currentDateAndTime = new Date();
+        const year = currentDateAndTime.getFullYear();
+        const month = currentDateAndTime.getMonth() + 1;
+        const day = currentDateAndTime.getDate();
+
+        var post_date = `${day}/${month}/${year}`;
+        var data = {
+            title: title_post,
+            etp_name: ept_name,
+            type_i:i,
+            type_f:f,
+            type_t:t,
+            type_r:r,
+            desc_job: etp_job_description,
+            desc_etp: etp_description,
+            contact_sdt: sdt_re,
+            contact_email: email_re,
+            exp_date: exp_date,
+            post_date: post_date
+        }
+        console.log(data);
+        $.ajax({
+            url: '/Recruitment/UpdateNewEtpPostQueue',
+            type: 'POST',
+            data: JSON.stringify(data),
+            contentType: 'application/json',
+            success: function (response) {
+                if (response) {
+                    alert('đã tạo bài đăng');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+        Swal.fire({
+            html: "<h3>Đã gửi cho quản trị viên<h3><h5>Hãy chờ quản trị viên duyệt đơn của bạn nhé!<h5>",
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+        });
+        //alert('Đã gửi bài tuyển dụng cho quản trị viên');     
+        
+    }
+</script>

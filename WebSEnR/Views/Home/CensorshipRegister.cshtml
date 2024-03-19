@@ -1,0 +1,130 @@
+﻿@model IEnumerable<register_queue>
+<head>
+    <style>        
+        textarea {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<div>
+    <div class="container-fluid">
+        <div class="container">
+            <b class="text-center">Duyệt thành viên</b><br /><br />
+        </div><br /><br />       
+        <div id="memberregister_content">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Họ và tên</th>
+                        <th>Ngày sinh (yyyy-mm-dd)</th>
+                        <th>Trường</th>
+                        <th>Khoa</th>
+                        <th>Khoá</th>
+                        <th>Link CV</th>
+                        <th>Giới thiệu bản thân</th>
+                        <th>Mục đích vào Lab</th>
+                        <th>SĐT</th>
+                        <th>Thao tác</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var q in Model)
+                    {
+                        <tr>
+                            <td>@q.id</td>
+                            <td>@q.fname</td>
+                            <td>@q.dob</td>
+                            <td>@q.school</td>
+                            <td>@q.faculty</td>
+                            <td>@q.grade</td>
+                            <td>@q.cv_link</td>
+                            <td>@q.desc_abtme</td>
+                            <td>@q.desc_abt_wanna</td>
+                            <td>@q.sdt</td>
+                            <td>
+                                <button type="button" class="align-content-center btn-success" onclick="submit_this(@q.id)">Duyệt!</button>
+                                <button type="button" class="align-content-center btn-danger" onclick="delete_this(@q.id)">Xoá!</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+            <div class="text-center">
+                <b class="text-center">Xoá thành viên có id là:</b><br /><br />
+                <input id="delete_item_id" type="text" /><br /><br />
+                <button type="button" class="align-content-center" onclick="delete_member()">Xoá</button>
+            </div>
+        </div>                
+    </div>
+</div>
+
+<script>
+    function submit_this(id) {
+        $.ajax({
+            url: '/AboutLab/AddMemberFrQueueToMember',
+            type: 'POST',
+            data: { id: id },
+            success: function (response) {
+                if (response) {
+                    console.log('đã thêm');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+        Swal.fire({
+            html: "<h3>Đã thêm!<h3>",
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+        });
+    }
+    function delete_this(id) {
+        $.ajax({
+            url: '/AboutLab/DeleteMemberatQueue',
+            type: 'POST',
+            data: { id: id },
+            success: function (response) {
+                if (response) {
+                    console.log('đã xoá');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+        Swal.fire({
+            html: "<h3>Đã xoá<h3>",
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+        });
+    }
+    function delete_member(){
+        var member_str_id = $('#delete_item_id').val();
+        var member_int_id = parseInt(member_str_id, 10);
+        $.ajax({
+            url: '/AboutLab/DeleteMember',
+            type: 'POST',
+            data: { id: member_int_id },
+            success: function (response) {
+                if (response) {
+                    console.log('đã xoá');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+        Swal.fire({
+            html: "<h3>Đã xoá<h3>",
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+        });
+    }
+    
+</script>

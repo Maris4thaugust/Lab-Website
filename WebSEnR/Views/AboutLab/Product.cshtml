@@ -1,0 +1,128 @@
+﻿
+@model IEnumerable<labproduct>
+<head>
+    <style>
+        /*#project_content,*/
+        #research_content,
+        #commerce_content {
+            display: none;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color:lightgray;
+        }
+    </style>
+</head>
+
+<div>
+    <div>
+        @*<img src="~/img/" />*@
+    </div>
+    <div class="container-fluid">
+        <ul class="nav nav-pills nav-fill" id="product_type">
+            <li class="nav-item">
+                <a class="nav-link text-dark active" onclick="openTab(event, 'project')">Đồ án tốt nghiệp</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" onclick="openTab(event, 'research')">Nghiên cứu khoa học</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" onclick="openTab(event, 'commerce')">Thương mại</a>
+            </li>
+        </ul>
+        <div id="project_content" class="tab-content">
+            <div class="container">
+                <br />
+                <h1>Đồ án tốt nghiệp</h1>
+                <br />
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th width="10%">ID</th>
+                            <th width="20%">Tên đồ án</th>
+                            <th width="20%">Người thực hiện</th>
+                            <th width="30%">Mô tả</th>
+                            <th width="20%">Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var obj in Model.Reverse()){
+                            if (obj.type == "Đồ án tốt nghiệp")
+                            {
+                                <tr>
+                                    <td>@obj.id</td>
+                                    <td>@obj.title</td>
+                                    <td>@obj.member</td>
+                                    <td>@obj.desc</td>
+                                    <td>@obj.href</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                    <tbody>
+                        
+                    </tbody>
+                </table>
+            </div>            
+        </div>
+        <div id="research_content" class="tab-content">
+            <div class="container">
+                <br />
+                <h1>Nghiên cứu khoa học</h1>
+                <br />
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th width="10%">ID</th>
+                            <th width="20%">Tên đề tài</th>
+                            <th width="20%">Người thực hiện</th>
+                            <th width="30%">Mô tả</th>
+                            <th width="20%">Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var obj in Model.Reverse())
+                        {
+                            if (obj.type == "Nghiên cứu khoa học")
+                            {
+                                <tr>
+                                    <td>@obj.id</td>
+                                    <td>@obj.title</td>
+                                    <td>@obj.member</td>
+                                    <td>@obj.desc</td>
+                                    <td>@obj.href</td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="commerce_content" class="tab-content">
+            <div class="container"><h1>Chưa có dự án hiện tại</h1></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function openTab(event, tabName) {
+        // Lấy tất cả các tab content và ẩn chúng
+        var tabContents = document.getElementsByClassName("tab-content");
+        for (var i = 0; i < tabContents.length; i++) {
+            tabContents[i].style.display = "none";
+        }
+
+        // Lấy tất cả các tab links và xóa lớp "active" khỏi chúng
+        var tabLinks = document.getElementsByClassName("nav-link");
+        for (var i = 0; i < tabLinks.length; i++) {
+            tabLinks[i].classList.remove("active");
+        }
+
+        // Hiển thị tab content và đánh dấu tab link là "active" cho tab được chọn
+        document.getElementById(tabName + "_content").style.display = "block";
+        event.currentTarget.classList.add("active");
+    }
+
+</script>

@@ -1,0 +1,80 @@
+﻿@model IEnumerable<post_etp>
+<head>
+    <style>
+        .item{
+            border: groove;
+            background-color: lightgrey;
+        }
+        h5{
+            margin-left:10px;
+            margin-top: 10px;
+        }
+        article{
+            border:groove;
+            margin-block:15px;
+            background-color: #f8f8fe;
+        } 
+        h4{
+            margin-top:10px;
+            margin-left:15px;
+            
+        }
+        h3{
+            margin-top:10px;
+            margin-left:10px;
+            
+        }
+        content{
+            margin-left:20px;
+            margin-bottom:10px;
+        }
+        p{
+            margin-left: 15px;
+        }
+    </style>
+</head>
+<div class="container">   
+    @foreach (var ep in Model.Reverse())
+    {
+        if (ep.type_i == "1")
+        {
+            <div class="item">
+                <article>
+                    <h3>
+                        @ep.title
+                    </h3>
+                    <div class="content">
+                        <h4>@ep.etp_name</h4>
+                        <h5>Giới thiệu về công ty: </h5>
+                        <content><i>@ep.desc_etp</i></content><br />
+                        <h5>Giới thiệu về công việc: </h5>
+                        <content><i>@ep.desc_etp</i></content><br />
+                        <h5>Vị trí tuyển dụng: </h5>
+                        <content>
+                            @if (ep.type_i == "1")
+                            {
+                                <i>Thực tập sinh; </i>
+                            } @if (ep.type_f == "1")
+                            {
+                                <i>Nhân viên chính thức; </i>
+                            } @if (ep.type_t == "1")
+                            {
+                                <i>Đào tạo việc làm; </i>
+                            } @if (ep.type_r == "1")
+                            {
+                                <i>Nghiên cứu sinh</i>
+                            }
+                        </content><br />
+                        <h5>Email liên hệ: </h5>
+                        <content><i>@ep.contact_email</i></content><br />
+                        <h5>Số điện thoại liên hệ: </h5>
+                        <content><i>@ep.contact_sdt</i></content><br />
+                        <h5>Ngày hết hạn: </h5>
+                        <content><i>@ep.exp_date</i></content><br />
+                        <content style="padding-left:1200px; font-size:small;"><i>id: @ep.id</i></content>
+                    </div>
+                </article>
+            </div>
+        }
+    }
+</div>

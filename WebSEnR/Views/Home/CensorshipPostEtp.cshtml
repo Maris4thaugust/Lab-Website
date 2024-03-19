@@ -1,0 +1,144 @@
+﻿@model IEnumerable<post_etp_queue>
+<head>
+    <style>
+        textarea {
+            width: 80%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<div>
+    <div class="container-fluid">
+        <div class="container">
+            <h2><b class="text-center">Duyệt bài tuyển dụng</b></h2><br /><br />
+        </div><br /><br />
+        <div id="memberregister_content">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên công ty</th>
+                        <th>Giới thiệu công ty</th>
+                        <th>Giới thiệu công việc</th>
+                        <th>Các vị trí tuyển dụng</th>
+                        <th>Hạn nộp hồ sơ</th>
+                        <th>Email liên hệ</th>
+                        <th>SDT</th>
+                        <th>Ngày đăng tin</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var q in Model)
+                    {
+                        <tr>
+                            <td>@q.id</td>
+                            <td>@q.etp_name</td>
+                            <td>@q.desc_etp</td>
+                            <td>@q.desc_job</td>
+                            <td>@if (q.type_i == "1")
+                                {
+                                    <i>Thực tập sinh, </i>
+                                }
+                                @if (q.type_t == "1")
+                                {
+                                    <i>Hỗ trợ đào tạo, </i>
+                                }
+                                @if (q.type_r == "1")
+                                {
+                                    <i>Nghiên cứu sinh (cộng tác viên), </i>
+                                }
+                                @if (q.type_f == "1")
+                                {
+                                    <i>Nhân viên chính thức</i>
+                                }
+                            </td>
+                            <td>@q.exp_date</td>
+                            <td>@q.contact_email</td>
+                            <td>@q.contact_sdt</td>
+                            <td>@q.post_date</td>
+                            <td>
+                                <button type="button" class="align-content-center btn-success" onclick="submit(@q.id)">Duyệt!</button>
+                                <button type="button" class="align-content-center btn-danger" onclick="delete_this(@q.id)">Xoá!</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <br />
+        </div>
+        <br /><br />
+        <div class="container">
+            <b class="text-center">Xoá bài tuyển dụng có id là:</b><br /><br />
+            <input id="delete_recruitment_post_id" type="text" /><br /><br />
+            <button type="button" class="align-content-center" onclick="delete_recruitment_post()">Xoá</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function submit(id) {
+        $.ajax({
+            url: '/Recruitment/UpdateNewEtpPost',
+            type: 'POST',
+            data: { id: id },
+            success: function (response) {
+                if (response) {
+                    alert('đã thêm');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+        Swal.fire({
+            html: "<h3>Đã đăng!<h3>",
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+        });        
+    }
+    function delete_this(id){
+        $.ajax({
+            url: '/Recruitment/DeleteEtpPostQueue',
+            type: 'POST',
+            data: { id: id },
+            success: function (response) {
+                if (response) {
+                    alert('đã xoá');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+        Swal.fire({
+            html: "<h3>Đã xoá<h3>",
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+        });
+    }
+    function delete_recruitment_post() {
+        var str_id = $('#delete_recruitment_post_id').val();
+        var id = parseInt(str_id, 10);
+        $.ajax({
+            url: '/Recruitment/DeleteEtpPost',
+            type: 'POST',
+            data: { id: id },
+            success: function (response) {
+                if (response) {
+                    alert('đã xoá');
+                }
+            },
+            error: function (error) {
+                console.error(error);
+            }
+        });
+        Swal.fire({
+            html: "<h3>Đã xoá<h3>",
+            confirmButtonText: 'OK',
+            cancelButtonText: 'Cancel',
+        });
+    }
+</script>

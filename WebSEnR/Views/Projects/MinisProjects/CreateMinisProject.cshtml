@@ -1,0 +1,31 @@
+﻿@using WebSEnR.ViewModel
+@model CreateMinisProjectViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+<form method="post" asp-action="CreateMinisProject">
+    <div class="form-group">
+        <label asp-for="Name">Name</label>>
+        <input asp-for="Name" class="form-control" placeholder="Enter name">
+        <span asp-validation-for="Name" class="Text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+        <input asp-for="Description" class="form-control" placeholder="Enter description">
+        <span asp-validation-for="Description" class="Text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Member">Member</label>
+        <input asp-for="Member" class="form-control" placeholder="Enter member">
+        <span asp-validation-for="Member" class="Text-danger"></span>
+    </div> 
+    <div class="form-group">
+        <label asp-for="Href">Link</label>
+        <input asp-for="Href" class="form-control" placeholder="Enter Link">
+        <span asp-validation-for="Href" class="Text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

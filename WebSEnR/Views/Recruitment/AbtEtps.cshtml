@@ -1,0 +1,29 @@
+﻿@model IEnumerable<post_etp>
+<head>
+    <style>
+        article:hover {
+            background-color: darkgrey;
+        }
+
+        h3 {
+            margin-top: 15px;
+            margin-left: 15px;
+        }
+        i {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<div class="container">
+    
+        @foreach (var ep in Model)
+        {
+            <div>
+                 <article class="border border-3" style="height:150px;" data="SSD" onclick="getArticleValue(this)">
+                    <h3>@ep.etp_name</h3>
+                    <i>@ep.desc_etp</i>
+                </article> 
+            </div>
+            
+        }
+</div>

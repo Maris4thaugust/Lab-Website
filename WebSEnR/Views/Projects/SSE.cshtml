@@ -1,0 +1,37 @@
+﻿@model IEnumerable<enterprise_project>
+<head>
+</head>
+
+<div class="container-fluid">
+    <div class="container">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th width="5%">ID</th>
+                    <th width="20%">Tên đề tài</th>
+                    <th width="15%">Công ty</th>
+                    <th width="20%">Mô tả</th>
+                    <th width="20%">Người thực hiện</th>
+                    <th width="20%">Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var etp in Model.Reverse())
+                {
+                    if (etp.company == "Samsung Electronics")
+                    {
+                        <tr>
+                            <td>@etp.id</td>
+                            <td>@etp.name</td>
+                            <td>@etp.company</td>
+                            <td>@etp.description</td>
+                            <td>@etp.member</td>
+                            <td>@etp.href</td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

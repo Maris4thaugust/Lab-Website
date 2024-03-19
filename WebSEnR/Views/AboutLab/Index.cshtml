@@ -1,0 +1,76 @@
+﻿
+
+<head>
+    <style>
+        
+    </style>
+</head>
+<div>
+    <div>
+        <img src="~/img/Env/lab_img.jpg" width="100%" height="700" />
+    </div>
+    <br />
+    <div class="container">
+        <div  id="about">
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 text-center">Thông tin giới thiệu</h3>
+            <p style="text-align: justify;">
+                <b>Chào mừng bạn đến với SEnR Laboratory!</b><br />
+                SEnR Laboratory là một phòng thí nghiệm tiên tiến, nơi chúng tôi tận dụng sự hội tụ của công nghệ sensor, robot để thực hiện nghiên cứu, phát triển các giải pháp thông minh và tự động hóa.
+                Với sự phát triển nhanh chóng của công nghệ, chúng tôi tập trung vào việc ứng dụng các cảm biến tiên tiến và trí tuệ nhân tạo để xây dựng hệ thống thông minh vượt trội. Chúng tôi khám phá và phân tích dữ liệu từ các cảm biến để thu thập thông tin chính xác về môi trường xung quanh và tương tác với robot.<br />
+                SEnR Laboratory tự hào là nơi nghiên cứu và phát triển các ứng dụng trong lĩnh vực như:<br />
+                - Điều khiển và định vị robot: Sử dụng các cảm biến và thuật toán tiên tiến, chúng tôi tạo ra hệ thống điều khiển và định vị robot chính xác và linh hoạt trong nhiều môi trường khác nhau.<br />
+                - Robot hợp tác: Chúng tôi tập trung vào phát triển các công nghệ và phương pháp để robot có thể làm việc cùng con người, tạo ra một môi trường làm việc an toàn và hiệu quả hơn.<br />
+                - Mạng cảm biến không dây: Chúng tôi nghiên cứu và triển khai các mạng cảm biến không dây để thu thập dữ liệu từ nhiều nguồn và phân tích thông tin để đưa ra những quyết định thông minh.<br />
+                SEnR Laboratory luôn hướng đến việc ứng dụng công nghệ cao để giải quyết các thách thức thực tế trong các lĩnh vực như tự động hóa công nghiệp, y tế, nông nghiệp thông minh và nhiều lĩnh vực khác. Chúng tôi sẵn lòng hợp tác với các đối tác và nhà nghiên cứu để mang lại những giải pháp đột phá và tạo nên tương lai thông minh và hiệu quả hơn.<br />
+                Hãy đến và khám phá cùng chúng tôi tại SEnR Laboratory, nơi sự sáng tạo và khám phá không có giới hạn!
+            </p>
+            <br />
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 text-center">Trang thiết bị</h3>
+            <p style="text-align: justify;">
+                <b>Chào mừng bạn đến với SEnR Laboratory!</b><br />
+                SEnR Laboratory được tài trợ những trang thiết bị hiện đại phục vụ cho quá trình nghiên cứu, học tập của các thành viên<br />
+                <b>Xem chi tiết các trang thiết bị: <i style="color:cadetblue;" onclick="equipments()">Trang thiết bị</i></b>
+            </p> 
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 text-center">Hướng nghiên cứu</h3>
+            <p style="text-align: justify;">
+                <b>Chào mừng bạn đến với SEnR Laboratory!</b><br />
+                SEnR Laboratory có rất nhiều hướng nhiên cứu dành cho các bạn đam mê học hỏi<br />
+                <b>Xem chi tiết các hướng nghien cứu: <i style="color:cadetblue;" onclick="research()">Các hướng nghiên cứu</i></b>
+            </p>
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 text-center">Sản phẩm</h3>
+            <p style="text-align: justify;">
+                <b>Chào mừng bạn đến với SEnR Laboratory!</b><br />
+                SEnR Laboratory phát triển rất nhiều sản phẩm khoa học, bao gồm thương mại và phi thương mại<br />
+                <b>Xem chi tiết các sản phẩm: <i style="color:cadetblue;" onclick="product()">Các sản phẩm</i></b>
+            </p>
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 text-center">Các thành viên</h3>
+            <p style="text-align: justify;">
+                <b>Chào mừng bạn đến với SEnR Laboratory!</b><br />
+                SEnR Laboratory <br />
+                <b>Xem danh sách thành viên: <i style="color:cadetblue;" onclick="member()">Thành viên Lab</i></b>
+            </p><h3 class="w3-border-bottom w3-border-light-grey w3-padding-16 text-center">Tài liệu tham khảo</h3>
+            <p style="text-align: justify;">
+                <b>Chào mừng bạn đến với SEnR Laboratory!</b><br />
+                SEnR Laboratory có rất nhiều tài liệu cho các bạn tham khảo<br />
+                <b>Xem các tài liệu tham khảo: <i style="color:cadetblue;" onclick="get_document()">Tài liệu tham khảo</i></b>
+            </p>
+        </div>
+    </div>
+</div>
+<script>
+    function equipments(){
+        window.location.href = "/AboutLab/EquipmentIndex"; //ActionName
+    }
+    function research(){
+        window.location.href = "/AboutLab/Research";
+    }
+    function product(){
+        window.location.href = "/AboutLab/Product";
+    }
+    function member(){
+        window.location.href = "/AboutLab/Member";
+    }
+    function get_document(){
+        window.location.href = "/AboutLab/Document";
+    }
+</script>
