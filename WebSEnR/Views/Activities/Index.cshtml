@@ -1,29 +1,36 @@
-﻿<head>
+﻿@model IEnumerable<Activity>
+<head>
     <style>
-        body {
-            margin-top: 20px;
-            background-image: url("../img/Env/BackgroundEquipment.png");
-            background-size: cover;
-            background-attachment: fixed;
+        .img-fluid {
+            width: 100%;
+            height: 275px;
+            object-fit: cover;
         }
-
-
     </style>
 </head>
-<div class="    container">
+<div class="container">
+    <a class="btn btn-primary btn-sm" , href="/Activities/CreateActivity">New Activity</a>
     <div class="row">
-        <div class="col-md-4">
-            <img src="https://sme.hust.edu.vn/wp-content/uploads/2024/03/DSC_0918-1536x1017.jpg" class="img-fluid" alt="Image">
-        </div>
-        <div class="col-md-8">
-            <div class="article-content">
-                <!-- Your article content goes here -->
-                <h2>[SME – NCKH] SEMINAR NGHIÊN CỨU KHOA HỌC THÁNG 3</h2>
-                <p>Khởi đầu cho năm Giáp Thìn sẽ gặt hái được nhiều thành tích về nghiên cứu khoa học, ngày 1/3/2024 tại phòng C7-602M, trường Cơ khí đã tổ chức hội nghị nghiên cứu khoa học thường xuyên đầu tiên của năm.</p>
-                <a href="https://sme.hust.edu.vn/tin-tuc-thong-bao/tin-tuc/sme-nckh-seminar-nghien-cuu-khoa-hoc-thang-3.html?fbclid=IwAR0dCqWCmLKCN0PyIRZMqfx-Q987-G7WOe4ASitMR3s9UzhIp-pErimyu3A">
-                    Thông tin chi tiết</a>
-                <!-- Add more content as needed -->
+        @foreach(var item in Model)
+        {
+            
+            <div class="col-md-4">
+                <img src="@item.Image" class="img-fluid" alt="Image">
             </div>
-        </div>
+            <div class="col-md-8">
+                <div class="article-content">
+                    <h2>@item.Title</h2>
+                    <p>@item.Description</p>
+                    <a href="@item.Url">
+                        Thông tin chi tiết
+                    </a>                  
+                </div>
+                <div class="modify-button">
+                    <a type="btn btn-success" asp-controller="Activities" asp-action="EditActivity" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <a type="btn btn-success" asp-controller="Activities" asp-action="DeleteActivity" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Delete</a>
+                </div>
+            </div>
+        }
+        
     </div>
 </div>

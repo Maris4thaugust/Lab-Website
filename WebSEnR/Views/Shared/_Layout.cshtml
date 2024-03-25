@@ -23,6 +23,12 @@
             z-index: 2;
         }
 
+        body {
+            margin-top: 20px;
+            background-image: url("../img/Env/BackgroundEquipment.png");
+            background-size: cover;
+            background-attachment: fixed;
+        }
         #registerButton {
             margin-left: 10px;
         }
@@ -34,7 +40,7 @@
     <header class="fixed-header">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebSEnR</a>
+                <a class="navbar-brand" asp-area="" asp-controller="AboutLab" asp-action="Index">WebSEnR</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -47,9 +53,10 @@
                                     News
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">News</a>
-                                    <a class="dropdown-item nav-link text-dark" href="#">Kí kết hợp tác</a>
-                                    <a class="dropdown-item nav-link text-dark" href="#">Tài trợ học bổng</a>
+                                    <a class="dropdown-item nav-link text-dark"  asp-controller="News" asp-action="Index">News</a>
+                                    <a class="dropdown-item nav-link text-dark"  asp-controller="News" asp-action="ContractNews">Kí kết hợp tác</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-controller="News" asp-action="ScholarshipNews">Tài trợ học bổng</a>
+                                    <a class="dropdown-item nav-link text-dark" asp-controller="News" asp-action="OthersNews">Tin khác</a>
                                 </div>
                             </div>
                         </li>
@@ -73,10 +80,10 @@
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                     <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="Activities" asp-action="Index">Tất cả Hoạt động</a>
-                                    <a class="dropdown-item nav-link text-dark" href="#">Học bổng sau đại học</a>
-                                    <a class="dropdown-item nav-link text-dark" href="#">Hội thảo khoa học</a>
-                                    <a class="dropdown-item nav-link text-dark" href="#">Hợp tác doanh nghiệp</a>
-                                    <a class="dropdown-item nav-link text-dark" href="#">Hoạt động khác</a>
+                                    <a class="dropdown-item nav-link text-dark" href="/Activities/AfterUniActivity">Học bổng sau đại học</a>
+                                    <a class="dropdown-item nav-link text-dark" href="/Activities/Seminar">Hội thảo khoa học</a>
+                                    <a class="dropdown-item nav-link text-dark" href="/Activities/EnterpriseCooperate">Hợp tác doanh nghiệp</a>
+                                    <a class="dropdown-item nav-link text-dark" href="/Activities/Others">Hoạt động khác</a>
                                 </div>
                             </div>
                         </li>
@@ -86,7 +93,6 @@
                                     Giới thiệu Lab
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="AboutLab" asp-action="Index">Giới thiệu Lab</a>
                                     <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="AboutLab" asp-action="EquipmentIndex">Trang thiết bị</a>
                                     <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="AboutLab" asp-action="Research">Hướng nghiên cứu</a>
                                     <a class="dropdown-item nav-link text-dark" asp-area="" asp-controller="AboutLab" asp-action="Product">Sản phẩm</a>

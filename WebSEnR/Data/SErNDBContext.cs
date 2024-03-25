@@ -22,5 +22,8 @@ namespace WebSEnR.Data
         public DbSet<post_etp> posts_etp { get; set; }
         public DbSet<lab_member> lab_members { get; set; }
         public DbSet<Equipments> Equipments { get; set; }
+        public DbSet<DocumentModel> DocumentModel { get; set; }
+        public DbSet<Activity> Activities { get; set; }
+        public DbSet<News> News { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<lab_member>
+﻿@using WebSEnR.Models.AboutLabModel
+@model IEnumerable<lab_member>
 <head>
     <style>
         body {
@@ -80,7 +81,6 @@
                     <th>Khoa</th>
                     <th>Khoá</th>
                     <th>Role</th>
-                    <th>Giới thiệu bản thân</th>
                     <th>Dự án đã tham gia</th>
                 </tr>
             </thead>
@@ -94,7 +94,6 @@
                         <td>@q.facul</td>
                         <td>@q.grade</td>
                         <td>@q.role</td>
-                        <td>@q.desc</td>
                         <td>@q.joined_prjs</td>                       
                     </tr>
                 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Collections.Generic;
+using System.Reflection;
 using WebSEnR.Data;
 using WebSEnR.Interface;
 using WebSEnR.Interface.AboutLabInterface;
@@ -8,7 +9,9 @@ using WebSEnR.Models;
 using WebSEnR.Models.AboutLabModel;
 using WebSEnR.Models.ProjectsModel;
 using WebSEnR.ViewModel;
+using WebSEnR.ViewModel.DocumentViewModel;
 using WebSEnR.ViewModel.EquipmentViewModel;
+using WebSEnR.ViewModel.ProjectViewModel;
 using static WebSEnR.Controllers.HomeController;
 
 namespace WebSEnR.Controllers
@@ -18,12 +21,15 @@ namespace WebSEnR.Controllers
         private readonly IPhotoService _photoService;
         private readonly SErNDBContext _db;
         private readonly IEquipmentRepository _equipContext;
+        private readonly IDocumentRepository _docContext;
 
-        public AboutLab(SErNDBContext db, IEquipmentRepository equipContext, IPhotoService photoService)
+        public AboutLab(SErNDBContext db, IEquipmentRepository equipContext, IPhotoService photoService, IDocumentRepository docContext)
         {
             _photoService = photoService;
             _equipContext = equipContext;
             _db = db;
+            _docContext = docContext;
+
         }
 
         public IActionResult Index()
@@ -76,7 +82,7 @@ namespace WebSEnR.Controllers
                 var result = await _photoService.AddPhotoAsync(EqtmVM.Image);
                 var Eqmt = new Equipments
                 {
-                    Tittle = EqtmVM.Tittle,
+                    Title = EqtmVM.Title,
                     Description = EqtmVM.Description,
                     Image = result.Url.ToString(),
                     EquipmentCategory = EqtmVM.EquipmentCategory,
@@ -112,7 +118,7 @@ namespace WebSEnR.Controllers
             if (Eqtm == null) return View("Error!");
             var EqtmVM = new EditEquipmentViewModel
             {
-                Tittle = Eqtm.Tittle,
+                Title = Eqtm.Title,
                 Description = Eqtm.Description,
                 URL = Eqtm.Image,
                 EquipmentCategory = Eqtm.EquipmentCategory,
@@ -144,7 +150,7 @@ namespace WebSEnR.Controllers
                 var Eqtm = new Equipments
                 {
                     Id = id,
-                    Tittle = EqtmVM.Tittle,
+                    Title = EqtmVM.Title,
                     Description = EqtmVM.Description,
                     Image = photoResult.Url.ToString(),
                     ProductId = EqtmVM.ProductId,
@@ -213,13 +219,100 @@ namespace WebSEnR.Controllers
         {
             return View("/Views/AboutLab/Document/Document.cshtml");
         }
-        public IActionResult ReferenceBook()
+        public async Task<IActionResult> ReferenceBook()
         {
-            return View("/Views/AboutLab/Document/ReferenceBook.cshtml");
+            IEnumerable<DocumentModel> Doc = await _docContext.GetAll();
+            return View("/Views/AboutLab/Document/ReferenceBook.cshtml",Doc);
         }
-        public IActionResult ReferenceGraduateProject()
+        public async Task<IActionResult> ReferenceGraduateProject()
         {
-            return View("/Views/AboutLab/Document/ReferenceGraduateProject.cshtml");
+            IEnumerable<DocumentModel> Doc = await _docContext.GetAll();
+            return View("/Views/AboutLab/Document/ReferenceGraduateProject.cshtml", Doc);
+        }
+        public IActionResult CreateDocument()
+        {
+            return View("/Views/AboutLab/Document/CreateDocument.cshtml");
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateDocument(CreateDocumentViewModel DocVM)
+        {
+            if (ModelState.IsValid)
+            {
+                var Doc = new DocumentModel
+                {
+                    Title = DocVM.Title,
+                    Url = DocVM.Url,
+                    DocumentCategory = DocVM.DocumentCategory
+                };
+                _docContext.Add(Doc);
+                var Category = Doc.DocumentCategory.ToString();
+                switch (Category)
+                {
+                    case "ReferenceBook":
+                        return RedirectToAction("ReferenceBook");
+                        break;
+                    case "ReferenceGraduateProject":
+                        return RedirectToAction("ReferenceGraduateProject");
+                        break;
+
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Create Failed");
+            }
+            return View("/Views/AboutLab/Document/CreateDocument.cshtml", DocVM);
+        }
+        public async Task<IActionResult> EditDocument(int id)
+        {
+            var Doc = await _docContext.GetByIdAsync(id);
+            if (Doc == null) return View("Error!");
+            var DocVM = new EditDocumentViewModel
+            {
+                Title = Doc.Title,
+                Url = Doc.Url,
+                DocumentCategory = Doc.DocumentCategory
+
+            };
+            return View("/Views/AboutLab/Document/EditDocument.cshtml", DocVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditDocument(int id, EditDocumentViewModel DocVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError("", "Failed to edit");
+                return View("Views/Projects/Document/EditDocument.cshtml", DocVM);
+            }
+            var UserDocument = await _docContext.GetByIdAsyncNoTracking(id);
+            if (UserDocument != null)
+            {
+                var Doc = new DocumentModel
+                {
+                    Id = id,
+                    Title = DocVM.Title,
+                    Url = DocVM.Url,
+                    DocumentCategory = DocVM.DocumentCategory
+
+                };
+                _docContext.Update(Doc);
+                var Category = Doc.DocumentCategory.ToString();
+                switch (Category)
+                {
+                    case "ReferenceBook":
+                        return RedirectToAction("ReferenceBook");
+                        break;
+                    case "ReferenceGraduateProject":
+                        return RedirectToAction("ReferenceGraduateProject");
+                        break;
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Create Failed");
+            }
+            return View("/Views/AboutLab/Document/EditDocument.cshtml", DocVM);
         }
 
         //---------------------------- ResearchController----------------------------------------

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebSEnR.Models
+namespace WebSEnR.Models.ProjectsModel
 {
     public class enterprise_project
     {

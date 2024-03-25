@@ -1,4 +1,4 @@
-﻿namespace WebSEnR.ViewModel
+﻿namespace WebSEnR.ViewModel.ProjectViewModel
 {
     public class CreateMinisProjectViewModel
     {

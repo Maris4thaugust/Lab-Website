@@ -1,4 +1,6 @@
-﻿<head>
+﻿@using WebSEnR.Models.AboutLabModel
+@model IEnumerable<DocumentModel>
+<head>
     <style>
         body {
             margin-top: 20px;
@@ -80,6 +82,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="content">
     <div class="container">
+        <a class="btn btn-primary btn-sm" , href="/AboutLab/CreateDocument">New Document</a>
         <div class="row">
             <div class="col-12">
                 <div class="card-box">
@@ -88,40 +91,27 @@
                             <h4 class="header-title m-b-30">Sách tham khảo</h4>
                         </div>
                     </div>
-
                     <div class="row">
-                        <div class="col-lg-3 col-xl-2">
-                            <div class="file-man-box">
-                                <a href="" class="file-close"><i class="fa fa-times-circle"></i></a>
-                                <div class="file-img-box"><img src="https://coderthemes.com/highdmin/layouts/assets/images/file_icons/pdf.svg" alt="icon"></div><a href="#" class="file-download"><i class="fa fa-download"></i></a>
-                                <div class="file-man-title">
-                                    <h5 class="mb-0 text-overflow">invoice_project.pdf</h5>
-                                    <p class="mb-0"><small>568.8 kb</small></p>
+                        @foreach(var item in Model)
+                        {
+                            var Category = item.DocumentCategory.ToString();
+                            if (Category == "ReferenceBook")
+                            {
+                                <div class="col-lg-3 col-xl-2">
+                                    <a type="btn btn-success" asp-controller="AboutLab" asp-action="EditDocument" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    <a href="@item.Url">
+                                    <div class="file-man-box">
+                                        <div class="file-img-box"><img src="https://coderthemes.com/highdmin/layouts/assets/images/file_icons/pdf.svg" alt="icon"></div>
+                                        <div class="file-man-title">
+                                            <h5 class="mb-0 text-overflow">@item.Title</h5>
+                                        </div>
+                                    </div>
+                                    </a>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-xl-2">
-                            <div class="file-man-box">
-                                <a href="" class="file-close"><i class="fa fa-times-circle"></i></a>
-                                <div class="file-img-box"><img src="https://coderthemes.com/highdmin/layouts/assets/images/file_icons/pdf.svg" alt="icon"></div><a href="#" class="file-download"><i class="fa fa-download"></i></a>
-                                <div class="file-man-title">
-                                    <h5 class="mb-0 text-overflow">invoice_project.pdf</h5>
-                                    <p class="mb-0"><small>568.8 kb</small></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-xl-2">
-                            <div class="file-man-box">
-                                <a href="" class="file-close"><i class="fa fa-times-circle"></i></a>
-                                <div class="file-img-box"><img src="https://coderthemes.com/highdmin/layouts/assets/images/file_icons/pdf.svg" alt="icon"></div><a href="#" class="file-download"><i class="fa fa-download"></i></a>
-                                <div class="file-man-title">
-                                    <h5 class="mb-0 text-overflow">invoice_project.pdf</h5>
-                                    <p class="mb-0"><small>568.8 kb</small></p>
-                                </div>
-                            </div>
-                        </div>
+                            }
+                        }
+
                     </div>
-                  
                     <div class="text-center mt-3">
                         <button type="button" class="btn btn-outline-danger w-md waves-effect waves-light"><i class="mdi mdi-refresh"></i> Load More Files</button>
                     </div>

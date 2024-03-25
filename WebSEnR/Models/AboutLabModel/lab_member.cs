@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebSEnR.Models
+namespace WebSEnR.Models.AboutLabModel
 {
     public class lab_member
     {

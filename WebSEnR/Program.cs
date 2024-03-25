@@ -1,5 +1,3 @@
-
-
 using Microsoft.EntityFrameworkCore;
 using WebSEnR.Data;
 using WebSEnR.Repository.ProjectRepository;
@@ -10,6 +8,11 @@ using WebSEnR.Interface;
 using WebSEnR.Services;
 using WebSEnR.Interface.AboutLabInterface;
 using WebSEnR.Repository.AboutLabRepository;
+using WebSEnR.Interface.ActivityInterface;
+using WebSEnR.Repository.ActivityRepository;
+using WebSEnR.Interface.NewsInterface;
+using WebSEnR.Repository.NewsRepository;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +21,9 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IUniProjectRepository, UniProjectRepository>();
 builder.Services.AddScoped<IMinisProjectRepository, MinisProjectRepository>();
 builder.Services.AddScoped<IEquipmentRepository, EquipmentRepository>();
+builder.Services.AddScoped<IDocumentRepository, DocumentRepository>();
+builder.Services.AddScoped<IActivityRepository,ActivityRepository>();
+builder.Services.AddScoped<INewsRepository,NewsRepository>();
 builder.Services.AddScoped<IPhotoService, PhotoService>();
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
 

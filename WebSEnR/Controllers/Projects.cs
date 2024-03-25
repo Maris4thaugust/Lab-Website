@@ -3,10 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using WebSEnR.Data;
 using WebSEnR.Interface;
 using WebSEnR.Interface.ProjectInterface;
-using WebSEnR.Models;
 using WebSEnR.Models.ProjectsModel;
 using WebSEnR.Repository.ProjectRepository;
-using WebSEnR.ViewModel;
+using WebSEnR.ViewModel.ProjectViewModel;
 
 namespace WebSEnR.Controllers
 {

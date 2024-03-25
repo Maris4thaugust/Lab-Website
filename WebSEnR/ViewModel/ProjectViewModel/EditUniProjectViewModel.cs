@@ -1,6 +1,6 @@
-﻿namespace WebSEnR.ViewModel
+﻿namespace WebSEnR.ViewModel.ProjectViewModel
 {
-    public class CreateUniProjectViewModel
+    public class EditUniProjectViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

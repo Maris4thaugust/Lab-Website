@@ -7,7 +7,7 @@ namespace WebSEnR.Models.AboutLabModel
     {
         [Key]
         public int Id { get; set; }
-        public string Tittle { get; set; }
+        public string Title { get; set; }
         public string? ProductId { get; set; }
         public EquipmentCategory EquipmentCategory { get; set; }
         public string? Description { get; set; }

@@ -1,0 +1,26 @@
+﻿@using WebSEnR.ViewModel.DocumentViewModel
+@using WebSEnR.Data.Enum
+@model CreateDocumentViewModel
+
+
+<form method="post" asp-action="CreateDocument" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title">Name</label>
+        <input asp-for="Title" class="form-control" placeholder="Enter title of the Document">
+        <span asp-validation-for="Title" class="Text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Url">Link</label>
+        <input asp-for="Url" class="form-control" placeholder="Enter link of the Document">
+        <span asp-validation-for="Url" class="Text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="DocumentCategory">EquipmentCategory</label>
+        <select asp-for="DocumentCategory" asp-items="@Html.GetEnumSelectList<DocumentCategory>()" class="form-control form-control-lg">
+            <option>--Select--</option>
+        </select>
+        <span asp-validation-for="DocumentCategory" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

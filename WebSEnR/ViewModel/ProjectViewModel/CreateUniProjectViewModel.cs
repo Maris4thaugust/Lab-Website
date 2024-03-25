@@ -1,6 +1,6 @@
-﻿namespace WebSEnR.ViewModel
+﻿namespace WebSEnR.ViewModel.ProjectViewModel
 {
-    public class EditMinisProjectViewModel
+    public class CreateUniProjectViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -9,4 +9,3 @@
         public string Href { get; set; }
     }
 }
-
