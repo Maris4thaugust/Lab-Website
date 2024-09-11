@@ -126,7 +126,7 @@
     </header>
     <br />
     <div>@* class="container"*@
-        <main role="main" class="pb-3">
+        <main MSSV="main" class="pb-3">
             <br />
             <br />
             @RenderBody()
@@ -153,24 +153,22 @@
                 <h2 id="actionmode">Đăng kí thành viên</h2><br>
                 <div id="register">
                     <form>
-                        <label for="fname">Họ và tên:</label><br>
-                        <input type="text" id="fname" name="fname"><br><br>
-                        <label for="dob">Date of Birth:</label><br><br>
+                        <label for="Name">Họ và tên:</label><br>
+                        <input type="text" id="Name" name="Name"><br><br>
+                        <label for="DoB">Date of Birth:</label><br><br>
                         <input type="date" name="begin" placeholder="dd-mm-yyyy" value="" min="1980-01-01" max="2023-12-31"><br><br>
-                        <label for="school">Trường:</label><br>
-                        <input type="text" id="school" name="school"><br><br>
-                        <label for="faculty">Khoa:</label><br>
-                        <input type="text" id="faculty" name="faculty"><br><br>
-                        <label for="grade">Khoá:</label><br>
-                        <input type="text" id="grade" name="grade"><br><br>
-                        <label for="desc_abtme">Giới thiệu bản thân:</label><br>
-                        <textarea type="text" id="desc_abtme" name="desc_abtme"></textarea><br><br>
-                        <label for="desc_abt_wanna">Giới thiệu về mong muốn của mình:</label><br>
-                        <textarea type="text" id="desc_abt_wanna" name="desc_abt_wanna"></textarea><br><br>
-                        <label for="sdt">Số điện thoại:</label><br>
-                        <input type="text" id="sdt" name="sdt"><br><br>
-                        <label for="cv_link">Link CV (nếu có):</label><br>
-                        <input type="text" id="cv_link" name="cv_link"><br><br>
+                        <label for="School">Trường:</label><br>
+                        <input type="text" id="School" name="School"><br><br>
+                        <label for="Major">Khoa:</label><br>
+                        <input type="text" id="Major" name="Major"><br><br>
+                        <label for="Grade">Khoá:</label><br>
+                        <input type="text" id="Grade" name="Grade"><br><br>
+                        <label for="Project">Dự án:</label><br>
+                        <input type="text" id="Project" name="Project"><br><br>
+                        <label for="PhoneNumber">Số điện thoại:</label><br>
+                        <input type="text" id="PhoneNumber" name="PhoneNumber"><br><br>
+                        <label for="CvLink">Link CV (nếu có):</label><br>
+                        <input type="text" id="CvLink" name="CvLink"><br><br>
                     </form>
                 </div>`;
         Swal.fire({
@@ -181,39 +179,36 @@
             showCloseButton: true
         }).then((result) => {
             if (result.isConfirmed) {
-                var fnameInput = document.getElementById("fname");
-                var dobInput = document.querySelector('input[type="date"]');
-                var schoolInput = document.getElementById("school");
-                var facultyInput = document.getElementById("faculty");
-                var gradeInput = document.getElementById("grade");
-                var descAbtmeTextarea = document.getElementById("desc_abtme");
-                var descAbtWannaTextarea = document.getElementById("desc_abt_wanna");
-                var sdtInput = document.getElementById("sdt");
-                var cvLinkInput = document.getElementById("cv_link");
+                var NameInput = document.getElementById("Name");
+                var DoBInput = document.querySelector('input[type="date"]');
+                var SchoolInput = document.getElementById("School");
+                var MajorInput = document.getElementById("Major");
+                var GradeInput = document.getElementById("Grade");
+                var ProjectInput = document.getElementById("Project");
+                var PhoneNumberInput = document.getElementById("PhoneNumber");
+                var cvLinkInput = document.getElementById("CvLink");
 
-                var fnameValue = fnameInput.value;
-                var dobValue = dobInput.value;
-                var schoolValue = schoolInput.value;
-                var facultyValue = facultyInput.value;
-                var gradeValue = gradeInput.value;
-                var descAbtmeValue = descAbtmeTextarea.value;
-                var descAbtWannaValue = descAbtWannaTextarea.value;
-                var sdtValue = sdtInput.value;
+                var NameValue = NameInput.value;
+                var DoBValue = DoBInput.value;
+                var SchoolValue = SchoolInput.value;
+                var MajorValue = MajorInput.value;
+                var ProjectValue = ProjectInput.value;
+                var GradeValue = GradeInput.value;
+                var PhoneNumberValue = PhoneNumberInput.value;
                 var cvLinkValue = cvLinkInput.value;
                 if(cvLinkValue == ""){
                     cvLinkValue = "none";
                 }
 
                 var data = {
-                    fname: fnameValue,
-                    dob: dobValue,
-                    school: schoolValue,
-                    faculty: facultyValue,
-                    grade: gradeValue,
-                    desc_abtme: descAbtmeValue,
-                    desc_abt_wanna: descAbtWannaValue,
-                    cv_link: cvLinkValue,
-                    sdt: sdtValue
+                    Name: NameValue,
+                    DoB: DoBValue,
+                    School: SchoolValue,
+                    Major: MajorValue,
+                    Grade: GradeValue,
+                    Project: ProjectValue,
+                    CvLink: cvLinkValue,
+                    PhoneNumber: PhoneNumberValue
                 }
                 console.log(data);
                 $.ajax({

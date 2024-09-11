@@ -53,11 +53,11 @@ namespace WebSEnR.Controllers
         }          
         public ActionResult CensorshipRegister()
         {
-            IEnumerable<register_queue> registers = _db.registerqueue;
+            IEnumerable<RegisterQueue> registers = _db.registerqueue;
             return View("CensorshipRegister",registers);
         }
         [HttpPost]
-        public IActionResult AddMemberToQueue([FromBody] register_queue data)
+        public IActionResult AddMemberToQueue([FromBody] RegisterQueue data)
         {
             _db.registerqueue.Add(data);
             _db.SaveChanges();

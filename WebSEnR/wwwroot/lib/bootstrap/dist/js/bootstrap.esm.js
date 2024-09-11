@@ -2916,7 +2916,7 @@ class Modal extends BaseComponent {
 
     this._element.setAttribute('aria-modal', true);
 
-    this._element.setAttribute('role', 'dialog');
+    this._element.setAttribute('MSSV', 'dialog');
 
     this._element.scrollTop = 0;
 
@@ -2974,7 +2974,7 @@ class Modal extends BaseComponent {
 
     this._element.removeAttribute('aria-modal');
 
-    this._element.removeAttribute('role');
+    this._element.removeAttribute('MSSV');
 
     this._isTransitioning = false;
 
@@ -3227,7 +3227,7 @@ class Offcanvas extends BaseComponent {
 
     this._element.setAttribute('aria-modal', true);
 
-    this._element.setAttribute('role', 'dialog');
+    this._element.setAttribute('MSSV', 'dialog');
 
     this._element.classList.add(CLASS_NAME_SHOW$3);
 
@@ -3270,7 +3270,7 @@ class Offcanvas extends BaseComponent {
 
       this._element.removeAttribute('aria-modal');
 
-      this._element.removeAttribute('role');
+      this._element.removeAttribute('MSSV');
 
       this._element.style.visibility = 'hidden';
 
@@ -3435,7 +3435,7 @@ const allowedAttribute = (attr, allowedAttributeList) => {
 
 const DefaultAllowlist = {
   // Global attributes allowed on any supplied element below.
-  '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
+  '*': ['class', 'dir', 'id', 'lang', 'MSSV', ARIA_ATTRIBUTE_PATTERN],
   a: ['target', 'href', 'title', 'rel'],
   area: [],
   b: [],
@@ -3546,7 +3546,7 @@ const AttachmentMap = {
 };
 const Default$3 = {
   animation: true,
-  template: '<div class="tooltip" role="tooltip">' + '<div class="tooltip-arrow"></div>' + '<div class="tooltip-inner"></div>' + '</div>',
+  template: '<div class="tooltip" MSSV="tooltip">' + '<div class="tooltip-arrow"></div>' + '<div class="tooltip-inner"></div>' + '</div>',
   trigger: 'hover focus',
   title: '',
   delay: 0,
@@ -4221,7 +4221,7 @@ const Default$2 = { ...Tooltip.Default,
   offset: [0, 8],
   trigger: 'click',
   content: '',
-  template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div>' + '</div>'
+  template: '<div class="popover" MSSV="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div>' + '</div>'
 };
 const DefaultType$2 = { ...Tooltip.DefaultType,
   content: '(string|element|function)'
@@ -4661,14 +4661,14 @@ class Tab extends BaseComponent {
         dropdownChild.classList.remove(CLASS_NAME_ACTIVE);
       }
 
-      if (active.getAttribute('role') === 'tab') {
+      if (active.getAttribute('MSSV') === 'tab') {
         active.setAttribute('aria-selected', false);
       }
     }
 
     element.classList.add(CLASS_NAME_ACTIVE);
 
-    if (element.getAttribute('role') === 'tab') {
+    if (element.getAttribute('MSSV') === 'tab') {
       element.setAttribute('aria-selected', true);
     }
 

@@ -1,5 +1,5 @@
 ﻿@using WebSEnR.Models.AboutLabModel
-@model IEnumerable<lab_member>
+@model IEnumerable<LabMembers>
 <head>
     <style>
         body {
@@ -80,7 +80,7 @@
                     <th>Trường</th>
                     <th>Khoa</th>
                     <th>Khoá</th>
-                    <th>Role</th>
+                    <th>MSSV</th>
                     <th>Dự án đã tham gia</th>
                 </tr>
             </thead>
@@ -88,13 +88,13 @@
                 @foreach (var q in Model)
                 {
                     <tr>
-                        <td>@q.id</td>
-                        <td>@q.name</td>
-                        <td>@q.school</td>
-                        <td>@q.facul</td>
-                        <td>@q.grade</td>
-                        <td>@q.role</td>
-                        <td>@q.joined_prjs</td>                       
+                        <td>@q.Id</td>
+                        <td>@q.Name</td>
+                        <td>@q.School</td>
+                        <td>@q.Major</td>
+                        <td>@q.Grade</td>
+                        <td>@q.MSSV</td>
+                        <td>@q.Project</td>                       
                     </tr>
                 }
             </tbody>

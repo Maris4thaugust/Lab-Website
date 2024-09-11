@@ -11,6 +11,7 @@ namespace WebSEnR.Models.AboutLabModel
         public string? ProductId { get; set; }
         public EquipmentCategory EquipmentCategory { get; set; }
         public string? Description { get; set; }
+        //public string? Detail { get; set; }
         public string Image { get; set; }
 
     }

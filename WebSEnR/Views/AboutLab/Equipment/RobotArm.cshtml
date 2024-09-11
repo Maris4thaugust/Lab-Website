@@ -2,77 +2,242 @@
 @model IEnumerable<Equipments>
 <head>
     <style>
-        body{
-            background-color: #f9f9f9;
-            margin-top:20px;
+
+        body {
+            margin-top: 20px;
             background-image: url("../img/Env/BackgroundEquipment.png");
             background-size: cover;
             background-attachment: fixed;
         }
-        .blur {
-            -webkit-box-shadow: 0 0 15px rgba(188,191,200,0.1),0 0 15px rgba(188,191,200,0.2) !important;
-            box-shadow: 0 0 15px rgba(188,191,200,0.1),0 0 15px rgba(188,191,200,0.2) !important;
-        }
-        .mr-5 {
-            margin-right: 5px !important;
-        }
-        .va-middle {
-            vertical-align: middle !important;
-        }
-        .bg-img {
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center center;
-            height: 600px;
-            border-radius: 10px;
-            object-fit: cover; /* Maintain aspect ratio */
+        
+        .product-list .product-item {
+            height:300px;
+            background-color: #e5e4e2
         }
 
-        .card-title {
-            font-size: 62px;
-      
+        .product-list .product-item {
+            margin-bottom: 20px
         }
 
-        .card-text {
-            font-size: 22px;
-            text-align: left;
+        .product-list .product-item .image {
+            float: left;
+            padding-right: 30px;
+            margin-bottom: 20px
+        }
+
+        .product-list .product-item .image{
+            height: 300px;
+           
+        }
+
+        .product-list .product-item .image img {
+            max-width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: 1s;
+        }
+
+            .product-list .product-item .name a {
+                text-transform: uppercase
+            }
+
+            .product-list .product-item .description {
+                margin: 10px 0 20px
+            }
+
+                .product-list .product-item .description p {
+                    line-height: 21px
+                }
+
+
+
+            .product-list .product-item .btn-primary {
+                margin: 0 0 20px
+            }
+
+        .showcase {
+            margin-bottom: 30px;
+            -webkit-transition: opacity 1s ease-in-out;
+            -o-transition: opacity 1s ease-in-out;
+            transition: opacity 1s ease-in-out
+        }
+
+            .showcase:hover {
+                zoom: 1;
+                filter: alpha(opacity=75);
+                opacity: .75
+            }
+
+        .fa-stack {
+            font-size: 6px;
+        }
+
+        .fa-star, .fa-star-o {
+            color: #ffce54;
+            font-size: 14px;
         }
 
 
-        .text-right-md {
-            text-align: right;
-            padding-top: 150px;
-            padding-left: 10px;
+        .product-item a {
+            display: block;
+            color: #434a54;
+            font-weight: 700;
+           
         }
 
+        .product-list .product-item .description p {
+            line-height: 21px;
+        }
 
-    </style>
+        .filter .panel-heading {
+            font-weight: 700;
+            background: #fff;
+            border-color: #e4e7ec;
+        }
+
+        .filter .panel-footer, .filter .panel-heading {
+            font-weight: 700;
+            background: #fff;
+            border-color: #e4e7ec;
+        }
+
+        .list-group a.list-group-item.active,
+        .list-group a.list-group-item.active:hover {
+            color: #434a54;
+            background-color: #f5f7fa;
+            border-color: #f5f7fa;
+            border-top: 1px solid #d6dadf;
+            border-bottom: 1px solid #d6dadf;
+        }
+
+        .product-list .image img {
+
+        }
+
+        .product-list .image img:hover{
+            transform:scale(1.1);
+            max-height:100%;
+            max-width:100%;
+            opacity:1.5;
+        }
+
+        .custom-container {
+            max-width: 900px;
+            height: 500px;
+            background-color: #484b4c;
+        }
+
+        .img-fluid {
+            max-width: 100%; /* Ensure image stays within container */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .text-color {
+            color: white; /* Change text color to white */
+        }
+        .modal{
+            position:fixed;
+            top:0;
+            right:0;
+            left:0;
+            bottom:0;
+            background:rgba(0,0,0,0.4);
+            align-items: center;
+            justify-content:center;
+            display: none;
+        }
+
+        .modal.open{
+            display: flex;
+        }
+        </style>
+
+
 </head>
 
-<div class="container mt-5">
-    <a class="btn btn-primary btn-sm" , href="/AboutLab/CreateEquipment">New Equipment</a>
-    <div class="p-x-15 blur">
-        @foreach(var item in Model)
-        {
-            var Category = item.EquipmentCategory.ToString();
-            if (Category == "RobotArm")
-            {
-                <a type="btn btn-success" asp-controller="AboutLab" asp-action="EditEquipment" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
-                <a type="btn btn-success" asp-controller="AboutLab" asp-action="DeleteEquipment" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Delete</a>
-                <div class="row position-relative" style="margin-top:30px; margin-bottom:30px">
-                    <div class="col-md-6 bg-img" style="background-image: url(@item.Image); min-height:320px">
-                        <p class="mb-0"></p>
-                    </div>
-                    <!-- / box-bg-image -->
-                    <div class="col-md-6 col-md-offset-6 text-right-md p-30  text-center" style="background-color:#fdefe7">
-                        <h5 class="card-title">@item.Title</h5>
-                        <p class="card-text">@item.Description</p>
-                        <a href="#" class="btn btn-primary">Đăng ký sử dụng</a>
-                    </div>
-                </div>
-                <!-- / row -->
-                    <!-- / column -->
-            }
-        }
-    </div><!-- / p-15 -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 hidden-xs">
+            <div class="list-group">
+                <a class="list-group-item" style="text-decoration: none;" asp-controller="AboutLab" asp-action="RobotArm" target="_blank">Robot Arm</a>
+                <a class="list-group-item" style="text-decoration: none;" asp-controller="AboutLab" asp-action="Sensor" target="_blank">Sensor</a>
+                <a class="list-group-item" style="text-decoration: none;" asp-controller="AboutLab" asp-action="HumanoidRobot" target="_blank">Humanoid Robot</a>
+                <a class="list-group-item" style="text-decoration: none;" asp-controller="AboutLab" asp-action="MobileRobot" target="_blank">Mobile Robot</a>
+                <a class="list-group-item" style="text-decoration: none;" asp-controller="AboutLab" asp-action="Drone" target="_blank">Drone</a>
+            </div>
+
+      
+        </div>
+        <div class="col-sm-9">
+            <br>
+            <div class="row">
+                <!--Item -->
+                @foreach (var item in Model)
+                {
+                    var Category = item.EquipmentCategory.ToString();
+                    if (Category == "RobotArm")
+                    {
+                        <div class="product-list col-xs-12">
+                            <div class="product-item">
+                                <div class="item-overlay">
+                                    <div class="clickable ">
+                                        <a class="js-open"></a>
+                                    </div>
+                                </div>
+                                <div class="image">
+                                    <a class="js-open"><img src="https://assets.vention.io/parts/images/PR-UR-005-0000/universal-robots-ur5e.png" alt="Product 1"></a>
+                                </div>
+                                <div class="caption">
+                                    <div class="name">
+                                        <a class="js-open">Leather laptop bag navy</a>
+                                    </div>
+                                    <div class="description">
+                                        <p>Stop your co-workers in their tracks with the stunning new 30-inch diagonal HP LP3065 Flat Panel..</p>
+                                    </div>
+                                    <div class="cart">
+                                        <button type="button" class="btn btn-primary">Add to Cart</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                }        
+            </div>
+        </div>
+    </div>
 </div>
+
+@* <div class="modal js-modal">
+    <div class="container custom-container">
+        <div class="row">
+            <div class="col-md-7">
+                <!-- Image takes up 3/5 of container -->
+                <img class="img-fluid" src="https://assets.vention.io/parts/images/PR-UR-005-0000/universal-robots-ur5e.png" class="img-fluid" alt="Placeholder Image">
+            </div>
+            <div class="col-md-5 d-flex align-items-center text-color">
+                <!-- Text takes up 2/5 of container -->
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac consectetur libero. Integer quis libero sem. Integer sit amet metus vitae urna aliquet viverra. Vivamus efficitur orci sit amet leo placerat feugiat.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const OpenBtns = document.querySelectorAll('.js-open')
+    const modal = document.querySelector('.js-modal')
+
+    function showDetail() {
+        modal.classList.add('open')
+    }
+
+    function closeDetail() {
+        modal.classList.remove('open')
+    }
+
+    for (const OpenBtn of OpenBtns) {
+        OpenBtn.addEventListener('click', showDetail)
+    }
+    modal.addEventListener('click',closeDetail)
+</script> *@

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<register_queue>
+﻿@model IEnumerable<RegisterQueue>
 <head>
     <style>        
         textarea {
@@ -25,8 +25,6 @@
                         <th>Khoa</th>
                         <th>Khoá</th>
                         <th>Link CV</th>
-                        <th>Giới thiệu bản thân</th>
-                        <th>Mục đích vào Lab</th>
                         <th>SĐT</th>
                         <th>Thao tác</th>                        
                     </tr>
@@ -35,19 +33,17 @@
                     @foreach(var q in Model)
                     {
                         <tr>
-                            <td>@q.id</td>
-                            <td>@q.fname</td>
-                            <td>@q.dob</td>
-                            <td>@q.school</td>
-                            <td>@q.faculty</td>
-                            <td>@q.grade</td>
-                            <td>@q.cv_link</td>
-                            <td>@q.desc_abtme</td>
-                            <td>@q.desc_abt_wanna</td>
-                            <td>@q.sdt</td>
+                            <td>@q.Id</td>
+                            <td>@q.Name</td>
+                            <td>@q.DoB</td>
+                            <td>@q.School</td>
+                            <td>@q.Major</td>
+                            <td>@q.Grade</td>
+                            <td>@q.CvLink</td>
+                            <td>@q.PhoneNumber</td>
                             <td>
-                                <button type="button" class="align-content-center btn-success" onclick="submit_this(@q.id)">Duyệt!</button>
-                                <button type="button" class="align-content-center btn-danger" onclick="delete_this(@q.id)">Xoá!</button>
+                                <button type="button" class="align-content-center btn-success" onclick="submit_this(@q.Id)">Duyệt!</button>
+                                <button type="button" class="align-content-center btn-danger" onclick="delete_this(@q.Id)">Xoá!</button>
                             </td>
                         </tr>
                     }

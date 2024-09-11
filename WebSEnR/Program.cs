@@ -12,6 +12,8 @@ using WebSEnR.Interface.ActivityInterface;
 using WebSEnR.Repository.ActivityRepository;
 using WebSEnR.Interface.NewsInterface;
 using WebSEnR.Repository.NewsRepository;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,7 +35,10 @@ builder.Services.AddDbContext<SErNDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
+
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

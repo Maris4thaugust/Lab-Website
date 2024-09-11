@@ -104,6 +104,9 @@ namespace WebSEnR.Controllers
                     case "HumanoidRobot":
                         return RedirectToAction("HumanoidRobot");
                         break;
+                    case "Sensor":
+                        return RedirectToAction("Sensor");
+                        break;
                 }
             }
             else
@@ -172,6 +175,9 @@ namespace WebSEnR.Controllers
                     case "HumanoidRobot":
                         return RedirectToAction("HumanoidRobot");
                         break;
+                    case "Sensor":
+                        return RedirectToAction("Sensor");
+                        break;
                 }
             }
             else
@@ -207,6 +213,9 @@ namespace WebSEnR.Controllers
                     break;
                 case "HumanoidRobot":
                     return RedirectToAction("HumanoidRobot");
+                    break;
+                case "Sensor":
+                    return RedirectToAction("Sensor");
                     break;
             }
             return RedirectToAction("/Views/AboutLab/Equipment/DeleteEquipment.cshtml",equipDetails);
@@ -326,7 +335,7 @@ namespace WebSEnR.Controllers
         /// <returns></returns>
         public IActionResult Member()
         {
-            IEnumerable<lab_member> lab_members = _db.lab_members;
+            IEnumerable<LabMembers> lab_members = _db.lab_members;
             return View("Member",lab_members);
         }
         [HttpPost]
@@ -347,15 +356,14 @@ namespace WebSEnR.Controllers
             var obj = _db.registerqueue.Find(id);
             if (obj != null)
             {
-                lab_member data = new lab_member()
+                LabMembers data = new LabMembers()
                 {
-                    name = obj.fname,
-                    school = obj.school,
-                    facul = obj.faculty,
-                    grade = obj.grade,
-                    role = "Member",
-                    desc = obj.desc_abtme,
-                    joined_prjs = "",
+                    Name = obj.Name,
+                    School = obj.School,
+                    Major = obj.Major,
+                    Grade = obj.Grade,
+                    MSSV = "Member",
+                    Project = obj.Project,
                 };
 
                 _db.lab_members.Add(data);
